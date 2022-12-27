@@ -1,0 +1,17 @@
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+RELAY_PIN = 12
+IR_PIN = 8
+LED_PIN = 10
+GPIO.setup(LED_PIN,GPIO.OUT)
+GPIO.setup(RELAY_PIN,GPIO.OUT)
+GPIO.setup(IR_PIN,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+while (1):
+
+    if GPIO.input(IR_PIN) == GPIO.LOW:
+        GPIO.output(LED_PIN,GPIO.HIGH)
+        GPIO.output(RELAY_PIN,GPIO.LOW)
+    else :
+        GPIO.output(LED_PIN,GPIO.LOW)
+        GPIO.output(RELAY_PIN,GPIO.HIGH)
